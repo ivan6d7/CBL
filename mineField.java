@@ -18,7 +18,7 @@ public class mineField {
     /*
      * Create a minefield of size length * height and populate it with zeroes
      */
-    private mineField(int length, int height) {
+    public mineField(int length, int height) {
         this.length = length;
         this.height = height;
         this.field = new int[length][height];
@@ -63,9 +63,7 @@ public class mineField {
     }
 
     public static void main(String[] args) {
-        mineField mineField = new mineField(10, 10);
-        mineField.populate(30);
-        mineField.print();
+
     }
 
 }
