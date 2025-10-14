@@ -26,7 +26,6 @@ public class game {
         public MineCell(int row, int colulmn) {
 
             this.setOpaque(true);
-            this.setIcon(icon);
             this.setSize(50, 50);
             this.setMargin(new Insets(0, 0, 0, 0));
             this.row = row;
@@ -44,6 +43,7 @@ public class game {
         }
 
         void reveal() {
+            this.setIcon(icon);
             System.out.println("BOOM");
         }
     }
@@ -52,21 +52,23 @@ public class game {
     class EmptyCell extends JButton {
         int row;
         int column;
+        int neighborMines;
         
         public EmptyCell (int row, int column) {
             this.row = row;
             this.column = column;
+            this.neighborMines = returnNeighboringMines();
             this.setSize(50, 50);
             this.setMargin(new Insets(0, 0, 0, 0));
 
             this.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    returnNeighboringMines();
+                    reveal();
                 }
             });
         }
 
-        void returnNeighboringMines() {
+        int returnNeighboringMines() {
             int neighborMines = 0;
             int lowerX = column - 1;
             int upperX = column + 2;
@@ -86,7 +88,6 @@ public class game {
                 lowerY = row;
             }
 
-
             for (int x = lowerX; x < upperX; x++) {
                 for (int y = lowerY; y < upperY; y++) {
                     if (field[y][x] == 1) {
@@ -94,10 +95,13 @@ public class game {
                     }
                 }
             }
-            System.out.println(neighborMines);
+            return neighborMines;
         }
 
-        
+        void reveal() {
+            this.setText(String.valueOf(neighborMines));
+        }
+
     }
 
 
