@@ -8,7 +8,7 @@ import java.util.Random;
  * @author Maria Haritonova
  * @id 2331705
  */
-public class mineField {
+public class MineField {
 
     int length;
     int height;
@@ -18,7 +18,7 @@ public class mineField {
     /*
      * Create a minefield of size length * height and populate it with zeroes
      */
-    public mineField(int length, int height) {
+    public MineField(int length, int height) {
         this.length = length;
         this.height = height;
         this.field = new int[length][height];
@@ -27,6 +27,7 @@ public class mineField {
                 k = 0;
             }
         }
+        this.populate(10);
     }
 
     private int[][] populate (int mineCount) {
