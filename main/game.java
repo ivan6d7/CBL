@@ -8,9 +8,9 @@ import javax.swing.*;
 
 public class game {
 
-    public static int fieldLength = 20;
-    public static int fieldHeight = 20;
-    public static int mineCount = 40;
+    public static int fieldLength = 10;
+    public static int fieldHeight = 10;
+    public static int mineCount = 10;
 
     static MineField mineField = new MineField(fieldLength, fieldHeight, mineCount);
 
@@ -22,6 +22,12 @@ public class game {
 
 
     public static void render() {
+
+        mineField = new MineField(fieldLength, fieldHeight, mineCount);
+
+        field = mineField.field;
+
+        cellField = new EmptyCell[fieldLength][fieldHeight];
 
         frame.getContentPane().removeAll();
 
