@@ -2,20 +2,19 @@ package main;
 
 import Cells.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
 import javax.swing.*;
 
 
 
 public class game {
 
-    static int fieldLength = 10;
-    static int fieldHeight = 10;
+    public static int fieldLength = 20;
+    public static int fieldHeight = 20;
+    public static int mineCount = 40;
 
-    MineField mineField = new MineField(fieldLength, fieldHeight);
+    static MineField mineField = new MineField(fieldLength, fieldHeight, mineCount);
 
-    int[][] field = mineField.field;
+    public static int[][] field = mineField.field;
 
     public static EmptyCell[][] cellField = new EmptyCell[fieldLength][fieldHeight];
 

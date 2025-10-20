@@ -1,6 +1,7 @@
 package Cells;
 
 import main.MineField;
+import main.game;
 
 // Empty cells and all its functions
 public class EmptyCell extends Cell {
@@ -21,22 +22,23 @@ public class EmptyCell extends Cell {
 
         
     }
+
     int returnNeighboringMines() {
 
-        int[][] field = mineField.field;
+        int[][] field = game.field;
 
         int neighborMines = 0;
         int lowerX = column - 1;
         int upperX = column + 2;
         int lowerY = row - 1;
         int upperY = row + 2;
-        if (column == 9) {
+        if (column == game.fieldLength - 1) {
             upperX = column;
         }
         if (column == 0) {
             lowerX = column;
         }
-        if (row == 9) {
+        if (row == game.fieldHeight - 1) {
             upperY = row;
         }
         if (row == 0) {

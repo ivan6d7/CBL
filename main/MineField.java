@@ -15,13 +15,12 @@ public class MineField {
     int length;
     int height;
     public int[][] field;
-    int mineCount = 10;
 
 
     /*
      * Create a minefield of size length * height and populate it with zeroes
      */
-    public MineField(int length, int height) {
+    public MineField(int length, int height, int mineCount) {
         this.length = length;
         this.height = height;
         this.field = new int[length][height];
