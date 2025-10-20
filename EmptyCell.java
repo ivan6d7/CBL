@@ -1,52 +1,23 @@
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
 // Empty cells and all its functions
-class EmptyCell extends JButton {
+class EmptyCell extends Cell {
+
     boolean isRevealed = false;
-    int row;
-    int column;
     MineField mineField;
     int neighborMines;
-
-
-    int fieldLength = game.fieldLength;
-    int fieldHeight = game.fieldHeight;
-    EmptyCell[][] cellField = game.cellField;
-
-
-    String flagIconLocation = "sprites/minesweeper_flag.png";
-    ImageIcon flagIcon = new ImageIcon(flagIconLocation);
     
     public EmptyCell (int row, int column, MineField mineField) {
-        this.row = row;
-        this.column = column;
+        
+        super(row, column);
+
         this.mineField = mineField;
         this.neighborMines = returnNeighboringMines();
-
-        this.setOpaque(true);            
-        this.setSize(50, 50);
-        this.setMargin(new Insets(0, 0, 0, 0));
 
 
         cellField[row][column] = this;
 
-        this.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                clearNeighborCells(row, column);
-            }
-        });
-        this.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (SwingUtilities.isRightMouseButton(e)) {
-                    System.out.println("Right click!");
-                    setFlag();
-                }
-            }
-        });
         
     }
     int returnNeighboringMines() {
@@ -79,13 +50,15 @@ class EmptyCell extends JButton {
         }
         return neighborMines;
     }
-    void reveal() {
+    void showValue() {
         this.setText(String.valueOf(neighborMines));
         this.isRevealed = true;
         System.out.println("revealed at " + this.row + "" + this.column);
     }
 
-    void clearNeighborCells(int row, int col) {
+    @Override
+    void reveal(int row, int col) {
+
 
         int[][] field = mineField.field;
         
@@ -107,22 +80,20 @@ class EmptyCell extends JButton {
         }    
     
         // Reveal this cell
-        cell.reveal();
+        cell.showValue();
     
         // Explore all neighbors if cell itself is zero
-        if (cell.returnNeighboringMines() == 0) {    
+        if (cell.neighborMines == 0) {    
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
                     if (i == 0 && j == 0) {
                         continue; // Skip itself
                     }
-                    clearNeighborCells(row + i, col + j);
+                    reveal(row + i, col + j);
                 }
             }
     
         }   
     }
-    void setFlag() {
-        this.setIcon(flagIcon);
-    }
+
 }

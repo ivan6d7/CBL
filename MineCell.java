@@ -1,22 +1,16 @@
-import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-class MineCell extends JButton {
-    int row;
-    int column;
+class MineCell extends Cell {
+
     String mineIconLocation = "sprites/images.png";
     ImageIcon icon = new ImageIcon(mineIconLocation);
 
-    public MineCell(int row, int colulmn) {
-        this.setOpaque(true);
-        this.setSize(50, 50);
-        this.setMargin(new Insets(0, 0, 0, 0));
-        this.row = row;
-        this.column = colulmn;
+    public MineCell(int row, int column) {
+        super(row, column);
         this.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                reveal();
+                reveal(row, column);
             }
         });
         this.addMouseListener(new MouseAdapter() {
@@ -33,7 +27,8 @@ class MineCell extends JButton {
         icon = new ImageIcon(newLocation);
     }
 
-    void reveal() {
+    @Override
+    void reveal(int row, int column) {
         this.setIcon(icon);
         System.out.println("BOOM");
     }
