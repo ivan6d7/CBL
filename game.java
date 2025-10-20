@@ -1,9 +1,12 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-
-import javax.imageio.ImageIO;
+import java.util.Arrays;
+import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.*;
+
 
 
 public class game {
@@ -15,8 +18,12 @@ public class game {
 
     MineField mineField = new MineField(fieldLength, fieldHeight);
 
+    Map<List<Integer>, EmptyCell> emptyCellMap = new HashMap<>();
 
     int[][] field = mineField.field;
+
+    EmptyCell[][] cellField = new EmptyCell[fieldLength][fieldHeight];
+
 
     class MineCell extends JButton{
         int row;
@@ -50,6 +57,7 @@ public class game {
 
 
     class EmptyCell extends JButton {
+        boolean isRevealed = false;
         int row;
         int column;
         int neighborMines;
@@ -63,7 +71,7 @@ public class game {
 
             this.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    reveal();
+                    clearNeighborCells(row, column);
                 }
             });
         }
@@ -100,6 +108,44 @@ public class game {
 
         void reveal() {
             this.setText(String.valueOf(neighborMines));
+            this.isRevealed = true;
+            System.out.println("revealed at " + this.row + "" + this.column);
+        }
+
+        void clearNeighborCells(int row, int col) {
+            // Safety checks
+            if (row < 0 || col < 0 
+                || row >= field.length || col >= field[0].length) {
+                return;
+            }
+        
+            // If it's not an empty cell, stop
+            if (field[row][col] != 0) {
+                return;
+            }
+
+            EmptyCell cell = cellField[row][col];
+        
+            // If already revealed, don't process again
+            if (cell.isRevealed) {
+                return;
+            }    
+        
+            // Reveal this cell
+            cell.reveal();
+        
+            // Explore all neighbors if cell itself is zero
+            if (cell.returnNeighboringMines() == 0) {    
+                for (int i = -1; i <= 1; i++) {
+                    for (int j = -1; j <= 1; j++) {
+                        if (i == 0 && j == 0) {
+                            continue; // Skip itself
+                        }
+                        clearNeighborCells(row + i, col + j);
+                    }
+                }
+        
+            }   
         }
 
     }
@@ -125,6 +171,8 @@ public class game {
                 } else {
                     EmptyCell emptyCell = new EmptyCell(y, x);
 
+                    cellField[y][x] = emptyCell;
+
                     panel.add(emptyCell);                    
                 }
 
@@ -137,6 +185,8 @@ public class game {
         frame.add(panel);
         frame.setLocationRelativeTo(null); // center on screen
         frame.setVisible(true);
+        int[] position = {1, 2};
+        System.out.println(emptyCellMap.get(position));
     }
 
     public static void main(String[] args) {  

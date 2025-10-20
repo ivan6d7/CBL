@@ -13,6 +13,7 @@ public class MineField {
     int length;
     int height;
     int[][] field;
+    int mineCount = 10;
 
 
     /*
@@ -27,7 +28,7 @@ public class MineField {
                 k = 0;
             }
         }
-        this.populate(10);
+        this.populate(mineCount);
     }
 
     private int[][] populate (int mineCount) {
