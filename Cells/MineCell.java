@@ -2,6 +2,7 @@ package Cells;
 
 import java.awt.event.*;
 import javax.swing.*;
+import UI.Screens.*;
 
 public class MineCell extends Cell {
 
@@ -10,11 +11,14 @@ public class MineCell extends Cell {
 
     public MineCell(int row, int column) {
         super(row, column);
+
         this.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 reveal(row, column);
+                new GameOverPanel();
             }
         });
+
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
