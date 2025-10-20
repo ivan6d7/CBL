@@ -23,6 +23,8 @@ public class game {
 
     public static void render() {
 
+        frame.getContentPane().removeAll();
+
         // 400 width and 500 height
         frame.setSize(mineField.length * 50, mineField.height * 50);
 
@@ -47,6 +49,8 @@ public class game {
 
         frame.add(panel);
         frame.setLocationRelativeTo(null); // center on screen
+        frame.revalidate();
+        frame.repaint();
         frame.setVisible(true);
         
     }
