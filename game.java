@@ -12,6 +12,7 @@ import javax.swing.*;
 public class game {
 
     String mineIconLocation = "sprites/images.png";
+    String flagIconLocation = "sprites/minesweeper_flag.png";
 
     int fieldLength = 10;
     int fieldHeight = 10;
@@ -43,6 +44,14 @@ public class game {
                     reveal();
                 }
             });
+            this.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    if (SwingUtilities.isRightMouseButton(e)) {
+                        System.out.println("Right click!");
+                    }
+                }
+            });
         }
 
         void changeIcon(String newLocation){
@@ -55,25 +64,41 @@ public class game {
         }
     }
 
-
+    // Empty cells and all its functions
     class EmptyCell extends JButton {
         boolean isRevealed = false;
         int row;
         int column;
         int neighborMines;
+        ImageIcon flagIcon = new ImageIcon(flagIconLocation);
         
         public EmptyCell (int row, int column) {
             this.row = row;
             this.column = column;
             this.neighborMines = returnNeighboringMines();
+            this.setOpaque(true);            
             this.setSize(50, 50);
             this.setMargin(new Insets(0, 0, 0, 0));
 
+
             this.addActionListener(new ActionListener() {
+                @Override
                 public void actionPerformed(ActionEvent e) {
                     clearNeighborCells(row, column);
                 }
             });
+
+            this.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    if (SwingUtilities.isRightMouseButton(e)) {
+                        System.out.println("Right click!");
+                        setFlag();
+                    }
+                }
+            });
+
+            
         }
 
         int returnNeighboringMines() {
@@ -148,6 +173,9 @@ public class game {
             }   
         }
 
+        void setFlag() {
+            this.setIcon(flagIcon);
+        }
     }
 
 
