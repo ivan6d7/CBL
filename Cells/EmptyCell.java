@@ -54,6 +54,7 @@ public class EmptyCell extends Cell {
         return neighborMines;
     }
     void showValue() {
+        this.setIcon(null);
         this.setText(String.valueOf(neighborMines));
         this.isRevealed = true;
         System.out.println("revealed at " + this.row + "" + this.column);

@@ -1,5 +1,6 @@
 package UI.Screens;
 
+import java.awt.BorderLayout;
 import java.awt.event.*;
 import javax.swing.*;
 import main.game;
@@ -19,11 +20,14 @@ public class GameOverPanel extends JPanel{
 
         label.setHorizontalAlignment(SwingConstants.CENTER);
 
-        add(label);
-        add(retryButton);
+        add(label, BorderLayout.NORTH);
+        add(retryButton, BorderLayout.SOUTH);
 
         frame.getContentPane().removeAll();
-        frame.add(this);
+
+        frame.setLayout(new BorderLayout());
+
+        frame.add(this, BorderLayout.CENTER);
         frame.revalidate();
         frame.repaint();
     }  

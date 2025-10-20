@@ -12,8 +12,13 @@ public abstract class Cell extends JButton {
 
     int row;
     int column;
+
+    boolean isFlagged = false;
  
     EmptyCell[][] cellField = game.cellField;
+
+    String defaultIconLocation = "sprites/defaultSquare.svg.png";
+    ImageIcon defaultIcon = new ImageIcon(defaultIconLocation);
 
     String flagIconLocation = "sprites/minesweeper_flag.png";
     ImageIcon flagIcon = new ImageIcon(flagIconLocation);
@@ -21,7 +26,14 @@ public abstract class Cell extends JButton {
     abstract void reveal(int row, int column);
 
     void setFlag() {
-        this.setIcon(flagIcon);
+        if (!isFlagged) {
+            this.setIcon(flagIcon);
+            isFlagged = true;
+        } else {
+            this.setIcon(defaultIcon);
+            isFlagged = false;
+        }
+
     }
 
     public Cell(int row, int column) {
@@ -29,6 +41,7 @@ public abstract class Cell extends JButton {
         this.column = column;
 
         this.setOpaque(true);
+        this.setIcon(defaultIcon);
         this.setSize(50, 50);
         this.setMargin(new Insets(0, 0, 0, 0));
 

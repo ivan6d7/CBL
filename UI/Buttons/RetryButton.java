@@ -11,6 +11,7 @@ public class RetryButton extends JButton {
     public RetryButton() {
         this.setText(text);
         this.setSize(500, 100);
+        
 
         this.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
