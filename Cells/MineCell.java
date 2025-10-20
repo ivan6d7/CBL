@@ -1,7 +1,9 @@
+package Cells;
+
 import java.awt.event.*;
 import javax.swing.*;
 
-class MineCell extends Cell {
+public class MineCell extends Cell {
 
     String mineIconLocation = "sprites/images.png";
     ImageIcon icon = new ImageIcon(mineIconLocation);

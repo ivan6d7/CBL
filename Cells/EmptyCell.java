@@ -1,8 +1,9 @@
-import java.awt.event.*;
-import javax.swing.*;
+package Cells;
+
+import main.MineField;
 
 // Empty cells and all its functions
-class EmptyCell extends Cell {
+public class EmptyCell extends Cell {
 
     boolean isRevealed = false;
     MineField mineField;

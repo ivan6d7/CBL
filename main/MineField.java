@@ -1,3 +1,5 @@
+package main;
+
 import java.util.Random;
 
 /**
@@ -12,7 +14,7 @@ public class MineField {
 
     int length;
     int height;
-    int[][] field;
+    public int[][] field;
     int mineCount = 10;
 
 

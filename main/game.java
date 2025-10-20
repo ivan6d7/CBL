@@ -1,3 +1,6 @@
+package main;
+
+import Cells.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -14,7 +17,7 @@ public class game {
 
     int[][] field = mineField.field;
 
-    static EmptyCell[][] cellField = new EmptyCell[fieldLength][fieldHeight];
+    public static EmptyCell[][] cellField = new EmptyCell[fieldLength][fieldHeight];
 
 
     void render() {

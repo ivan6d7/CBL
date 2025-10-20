@@ -1,9 +1,12 @@
+package Cells;
+
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
+import main.game;
 
-import java.awt.event.*;
 
 public abstract class Cell extends JButton {
 
@@ -35,7 +38,7 @@ public abstract class Cell extends JButton {
                 reveal(row, column);
             }
         });
-        
+
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
