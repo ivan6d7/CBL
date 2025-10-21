@@ -1,6 +1,11 @@
 {
     "java.project.sourcePaths": [""],
-    "java.project.referencedLibraries": [
-        "lib/*.jar"
-    ]
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/*.jar"
+        ],
+        "exclude": [
+            "lib/gson-2.13.2.jar"
+        ]
+    }
 }

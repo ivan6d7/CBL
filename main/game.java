@@ -25,13 +25,12 @@ public class game {
 
     public static void render() {
 
-        levels currentLevel = levels.generateLevel();
+        levels level = new levels(3);
 
-        fieldLength = currentLevel.levelLength;
-        fieldHeight = currentLevel.levelHeight;
-        mineCount = currentLevel.mineCount;
+        fieldLength = level.levelLength;
+        fieldHeight = level.levelHeight;
+        mineCount = level.mineCount;
         target = fieldLength * fieldHeight - mineCount;
-
 
         mineField = new MineField(fieldLength, fieldHeight, mineCount);
 
