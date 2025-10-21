@@ -6,15 +6,15 @@ import javax.swing.*;
 import main.game;
 
 
-public class GameOverPanel extends JPanel{
+public class WinScreenPanel extends JPanel{
 
     JFrame frame = game.frame;
 
     JLabel label;
     RetryButton retryButton;
 
-    public GameOverPanel() {
-        label = new JLabel("GAME OVER");
+    public WinScreenPanel() {
+        label = new JLabel("YOU WON");
 
         retryButton = new RetryButton();
 

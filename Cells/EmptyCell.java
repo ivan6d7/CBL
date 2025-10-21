@@ -2,6 +2,7 @@ package Cells;
 
 import main.MineField;
 import main.game;
+import UI.Screens.WinScreenPanel;
 
 // Empty cells and all its functions
 public class EmptyCell extends Cell {
@@ -85,6 +86,12 @@ public class EmptyCell extends Cell {
     
         // Reveal this cell
         cell.showValue();
+
+        if (game.cellsRevealed < game.target - 1) {
+            game.cellsRevealed += 1;
+        } else {
+            new WinScreenPanel();
+        }
     
         // Explore all neighbors if cell itself is zero
         if (cell.neighborMines == 0) {    

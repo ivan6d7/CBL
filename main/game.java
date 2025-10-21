@@ -11,6 +11,8 @@ public class game {
     public static int fieldLength = 10;
     public static int fieldHeight = 10;
     public static int mineCount = 10;
+    public static int cellsRevealed;
+    public static int target = fieldLength * fieldHeight - mineCount;
 
     static MineField mineField = new MineField(fieldLength, fieldHeight, mineCount);
 
@@ -28,6 +30,8 @@ public class game {
         field = mineField.field;
 
         cellField = new EmptyCell[fieldLength][fieldHeight];
+
+        cellsRevealed = 0;
 
         frame.getContentPane().removeAll();
 
