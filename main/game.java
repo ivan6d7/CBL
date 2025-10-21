@@ -1,6 +1,7 @@
 package main;
 
 import Cells.*;
+import Levels.*;
 import java.awt.*;
 import javax.swing.*;
 
@@ -22,8 +23,15 @@ public class game {
 
     public static JFrame frame = new JFrame();
 
-
     public static void render() {
+
+        levels currentLevel = levels.generateLevel();
+
+        fieldLength = currentLevel.levelLength;
+        fieldHeight = currentLevel.levelHeight;
+        mineCount = currentLevel.mineCount;
+        target = fieldLength * fieldHeight - mineCount;
+
 
         mineField = new MineField(fieldLength, fieldHeight, mineCount);
 
