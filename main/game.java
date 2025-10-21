@@ -1,7 +1,7 @@
 package main;
 
 import Cells.*;
-import Levels.*;
+import Levels.levels;
 import java.awt.*;
 import javax.swing.*;
 
@@ -23,9 +23,11 @@ public class game {
 
     public static JFrame frame = new JFrame();
 
+    public static int levelNumber = 1; 
+
     public static void render() {
 
-        levels level = new levels(3);
+        levels level = new levels(levelNumber);
 
         fieldLength = level.levelLength;
         fieldHeight = level.levelHeight;

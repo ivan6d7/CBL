@@ -13,7 +13,7 @@ public class levels {
 
         try (BufferedReader br = new BufferedReader(
             new FileReader("levels_txt/lvl" + levelNumber + ".txt"))) {
-                
+
             this.levelHeight = Integer.parseInt(br.readLine());
             this.levelLength = Integer.parseInt(br.readLine());
             this.mineCount = Integer.parseInt(br.readLine());

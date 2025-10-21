@@ -11,17 +11,17 @@ public class WinScreenPanel extends JPanel{
     JFrame frame = game.frame;
 
     JLabel label;
-    RetryButton retryButton;
+    NextLevelButton nextLevelButton;
 
     public WinScreenPanel() {
         label = new JLabel("YOU WON");
 
-        retryButton = new RetryButton();
+        nextLevelButton = new NextLevelButton();
 
         label.setHorizontalAlignment(SwingConstants.CENTER);
 
         add(label, BorderLayout.NORTH);
-        add(retryButton, BorderLayout.SOUTH);
+        add(nextLevelButton, BorderLayout.SOUTH);
 
         frame.getContentPane().removeAll();
 
