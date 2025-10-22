@@ -14,6 +14,8 @@ public abstract class Cell extends JButton {
     int row;
     int column;
 
+    boolean isRevealed = false;
+
     boolean isFlagged = false;
  
     EmptyCell[][] cellField = game.cellField;
@@ -55,6 +57,7 @@ public abstract class Cell extends JButton {
             @Override
             public void actionPerformed(ActionEvent e) {
                 reveal(row, column);
+                isRevealed = true;
             }
         });
 
@@ -68,4 +71,5 @@ public abstract class Cell extends JButton {
             }
         });        
     }
+    
 }

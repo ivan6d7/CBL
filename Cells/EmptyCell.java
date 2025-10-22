@@ -62,8 +62,7 @@ public class EmptyCell extends Cell {
     }
 
     @Override
-    void reveal(int row, int col) {
-
+    public void reveal(int row, int col) {
 
         int[][] field = mineField.field;
         
@@ -74,7 +73,7 @@ public class EmptyCell extends Cell {
         }
     
         // If it's not an empty cell, stop
-        if (field[row][col] != 0) {
+        if (field[row][col] == 1) {
             return;
         }
         EmptyCell cell = cellField[row][col];

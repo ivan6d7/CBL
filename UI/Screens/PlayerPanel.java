@@ -34,6 +34,6 @@ public class PlayerPanel extends JPanel{
     public void updateData() {
         mineCountLabel.setText(game.flagsSet + " / " + mineCount);
         lifeLabel.setText(game.lifeCount + " lives left");
-        saveWriter.save();
+        saveWriter.saveLife();
     }
 }

@@ -23,7 +23,8 @@ public class MineCell extends Cell {
                     game.playerPanel.updateData();
                 } else {
                     game.lifeCount = 5;
-                    saveWriter.save();
+                    game.levelNumber = 1;
+                    saveWriter.saveLife();
                     new GameOverPanel();
                 }
             }

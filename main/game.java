@@ -3,6 +3,7 @@ package main;
 import Cells.*;
 import Levels.levels;
 import SaveSystem.saveReader;
+import SaveSystem.saveWriter;
 import UI.Screens.PlayerPanel;
 import java.awt.*;
 import javax.swing.*;
@@ -18,9 +19,9 @@ public class game {
     public static int target = fieldLength * fieldHeight - mineCount;
 
     public static int flagsSet;
-    public static int lifeCount = saveReader.readSave();
+    public static int lifeCount = saveReader.readSaveLife();
 
-    public static int levelNumber = 1; 
+    public static int levelNumber = saveReader.readSaveLevel(); 
 
     static MineField mineField = new MineField(fieldLength, fieldHeight, mineCount);
 
@@ -35,6 +36,8 @@ public class game {
     public static PlayerPanel playerPanel;
 
     public static void render() {
+
+        saveWriter.saveLevel();
 
         levels level = new levels(levelNumber);
 
@@ -71,6 +74,10 @@ public class game {
                     MineCell mineCell = new MineCell(y, x);
 
                     panel.add(mineCell);
+                } else if (field[y][x] == 2) {
+                    HealPotionCell healPotionCell = new HealPotionCell(y, x, mineField);
+
+                    panel.add(healPotionCell);
                 } else {
                     EmptyCell emptyCell = new EmptyCell(y, x, mineField);
 
