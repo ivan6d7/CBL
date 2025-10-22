@@ -1,5 +1,6 @@
 package UI.Screens;
 
+import SaveSystem.saveWriter;
 import main.game;
 
 import java.awt.BorderLayout;
@@ -33,5 +34,6 @@ public class PlayerPanel extends JPanel{
     public void updateData() {
         mineCountLabel.setText(game.flagsSet + " / " + mineCount);
         lifeLabel.setText(game.lifeCount + " lives left");
+        saveWriter.save();
     }
 }

@@ -2,6 +2,8 @@ package Cells;
 
 import java.awt.event.*;
 import javax.swing.*;
+
+import SaveSystem.saveWriter;
 import UI.Screens.*;
 import main.game;
 
@@ -20,6 +22,8 @@ public class MineCell extends Cell {
                     game.lifeCount -= 1;
                     game.playerPanel.updateData();
                 } else {
+                    game.lifeCount = 5;
+                    saveWriter.save();
                     new GameOverPanel();
                 }
             }

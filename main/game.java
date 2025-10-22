@@ -2,8 +2,8 @@ package main;
 
 import Cells.*;
 import Levels.levels;
+import SaveSystem.saveReader;
 import UI.Screens.PlayerPanel;
-
 import java.awt.*;
 import javax.swing.*;
 
@@ -18,7 +18,7 @@ public class game {
     public static int target = fieldLength * fieldHeight - mineCount;
 
     public static int flagsSet;
-    public static int lifeCount = 3;
+    public static int lifeCount = saveReader.readSave();
 
     public static int levelNumber = 1; 
 
@@ -59,6 +59,7 @@ public class game {
         //frame.setSize(mineField.length * 50, mineField.height * 50);
 
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel(); //Jpanel with the game field
         panel.setLayout(new GridLayout(fieldLength, fieldHeight));
