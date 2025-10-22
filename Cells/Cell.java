@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 import main.game;
+import UI.Screens.PlayerPanel;
 
 
 public abstract class Cell extends JButton {
@@ -29,9 +30,14 @@ public abstract class Cell extends JButton {
         if (!isFlagged) {
             this.setIcon(flagIcon);
             isFlagged = true;
+            game.flagsSet += 1;
+            game.playerPanel.updateData();
+            
         } else {
             this.setIcon(defaultIcon);
             isFlagged = false;
+            game.flagsSet -= 1;
+            game.playerPanel.updateData();
         }
 
     }

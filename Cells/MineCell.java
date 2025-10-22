@@ -3,6 +3,7 @@ package Cells;
 import java.awt.event.*;
 import javax.swing.*;
 import UI.Screens.*;
+import main.game;
 
 public class MineCell extends Cell {
 
@@ -15,7 +16,12 @@ public class MineCell extends Cell {
         this.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 reveal(row, column);
-                new GameOverPanel();
+                if (game.lifeCount > 1) {
+                    game.lifeCount -= 1;
+                    game.playerPanel.updateData();
+                } else {
+                    new GameOverPanel();
+                }
             }
         });
 
