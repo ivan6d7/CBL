@@ -47,7 +47,7 @@ public class game {
         // 400 width and 500 height
         frame.setSize(mineField.length * 50, mineField.height * 50);
 
-        JPanel panel = new JPanel();
+        JPanel panel = new JPanel(); //Jpanel with the game field
         panel.setLayout(new GridLayout(fieldLength, fieldHeight));
 
 
