@@ -9,7 +9,7 @@ import main.game;
 
 public class MineCell extends Cell {
 
-    String mineIconLocation = "sprites/images.png";
+    String mineIconLocation = "sprites/bomb_icon.png";
     ImageIcon icon = new ImageIcon(mineIconLocation);
 
     public MineCell(int row, int column) {

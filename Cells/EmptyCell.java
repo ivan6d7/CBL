@@ -2,6 +2,9 @@ package Cells;
 
 import main.MineField;
 import main.game;
+
+import javax.swing.ImageIcon;
+
 import UI.Screens.WinScreenPanel;
 
 // Empty cells and all its functions
@@ -55,8 +58,7 @@ public class EmptyCell extends Cell {
         return neighborMines;
     }
     void showValue() {
-        this.setIcon(null);
-        this.setText(String.valueOf(neighborMines));
+        this.setIcon(new ImageIcon("sprites/numberSprites/icon_" + this.neighborMines + ".png"));
         this.isRevealed = true;
         System.out.println("revealed at " + this.row + "" + this.column);
     }

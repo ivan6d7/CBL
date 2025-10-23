@@ -20,7 +20,7 @@ public abstract class Cell extends JButton {
  
     EmptyCell[][] cellField = game.cellField;
 
-    String defaultIconLocation = "sprites/defaultSquare.svg.png";
+    String defaultIconLocation = "sprites/wall_icon.png";
     ImageIcon defaultIcon = new ImageIcon(defaultIconLocation);
 
     String flagIconLocation = "sprites/minesweeper_flag.png";
@@ -51,7 +51,7 @@ public abstract class Cell extends JButton {
         this.setOpaque(true);
         this.setIcon(defaultIcon);
         this.setSize(50, 50);
-        this.setMargin(new Insets(0, 0, 0, 0));
+        this.setMargin(new Insets(-5, -5, -5, -5));
 
         this.addActionListener(new ActionListener() {
             @Override
