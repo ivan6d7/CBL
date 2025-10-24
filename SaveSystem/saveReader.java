@@ -28,4 +28,21 @@ public class saveReader {
         }
     }
 
+    public static Integer[] readItems() {
+
+        Integer[] itemStatus = new Integer[3];
+
+        try (BufferedReader br = new BufferedReader(
+            new FileReader("saveFiles_txt/items.txt"))) {
+            itemStatus[0] = Integer.parseInt(br.readLine());
+            itemStatus[1] = Integer.parseInt(br.readLine());
+            itemStatus[2] = Integer.parseInt(br.readLine());
+            return itemStatus;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new Integer[2];
+        }
+    }
+
+
 }

@@ -29,6 +29,31 @@ public class saveWriter {
         }
     }
     
+    public static void saveItems() {
+        try (FileWriter writer = new FileWriter("saveFiles_txt/items.txt")) {
+
+            writer.write((String.valueOf(game.playerPanel.itemPanel.healingPotionButton.isActive())) + "\n");
+            writer.write((String.valueOf(game.playerPanel.itemPanel.revealPotionButton.isActive())) + "\n");
+            writer.write((String.valueOf(game.playerPanel.itemPanel.disarmKitButton.isActive())) + "\n");
+
+            System.out.println("File written successfully!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
+    public static void saveItems(boolean B) {
+        try (FileWriter writer = new FileWriter("saveFiles_txt/items.txt")) {
+
+            writer.write((String.valueOf(0)) + "\n");
+            writer.write((String.valueOf(0)) + "\n");
+            writer.write((String.valueOf(0)) + "\n");
+
+            System.out.println("File written successfully!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
