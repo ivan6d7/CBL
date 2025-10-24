@@ -14,7 +14,9 @@ public abstract class Cell extends JButton {
     int row;
     int column;
 
-    boolean isRevealed = false;
+    public boolean iconSet;
+
+    public boolean isRevealed = false;
 
     boolean isFlagged = false;
  
@@ -27,6 +29,8 @@ public abstract class Cell extends JButton {
     ImageIcon flagIcon = new ImageIcon(flagIconLocation);
 
     abstract void reveal(int row, int column);
+    abstract void setDefaultIcon();
+    abstract void showValue();
 
     void setFlag() {
         if (!isFlagged) {
@@ -38,6 +42,7 @@ public abstract class Cell extends JButton {
         } else {
             this.setIcon(defaultIcon);
             isFlagged = false;
+            this.isRevealed = false;
             game.flagsSet -= 1;
             game.playerPanel.updateData();
         }
@@ -58,6 +63,7 @@ public abstract class Cell extends JButton {
             public void actionPerformed(ActionEvent e) {
                 reveal(row, column);
                 isRevealed = true;
+
             }
         });
 

@@ -13,6 +13,7 @@ public class MineCell extends Cell {
     ImageIcon icon = new ImageIcon(mineIconLocation);
 
     public MineCell(int row, int column) {
+
         super(row, column);
 
         this.addActionListener(new ActionListener() {
@@ -45,8 +46,28 @@ public class MineCell extends Cell {
     }
 
     @Override
-    void reveal(int row, int column) {
+    public void reveal(int row, int column) {
+        this.isRevealed = true;
         this.setIcon(icon);
         System.out.println("BOOM");
     }
+
+    public void showValue() {
+        this.setIcon(icon);
+    }
+
+    public void showForPotion() {
+        this.setIcon(icon);
+    }
+
+    public void hideForPotion() {
+        if (!this.isRevealed) {
+            this.setIcon(new ImageIcon("sprites/wall_icon.png"));
+        }
+    }
+
+    @Override
+    public void setDefaultIcon() {
+    }
+
 }

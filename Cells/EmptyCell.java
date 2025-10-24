@@ -5,6 +5,7 @@ import main.game;
 
 import javax.swing.ImageIcon;
 
+import UI.Screens.WinPanel;
 import UI.Screens.WinScreenPanel;
 
 // Empty cells and all its functions
@@ -57,8 +58,10 @@ public class EmptyCell extends Cell {
         }
         return neighborMines;
     }
-    void showValue() {
-        this.setIcon(new ImageIcon("sprites/numberSprites/icon_" + this.neighborMines + ".png"));
+
+    @Override
+    public void showValue() {
+        this.setIcon(new ImageIcon("sprites/numberSprites/" + this.neighborMines + ".png"));
         this.isRevealed = true;
         System.out.println("revealed at " + this.row + "" + this.column);
     }
@@ -88,11 +91,7 @@ public class EmptyCell extends Cell {
         // Reveal this cell
         cell.showValue();
 
-        if (game.cellsRevealed < game.target - 1) {
-            game.cellsRevealed += 1;
-        } else {
-            new WinScreenPanel();
-        }
+        checkWinCondition();
     
         // Explore all neighbors if cell itself is zero
         if (cell.neighborMines == 0) {    
@@ -106,6 +105,35 @@ public class EmptyCell extends Cell {
             }
     
         }   
+    }
+
+    void checkWinCondition() {
+
+        if (game.cellsRevealed < game.target - 1) {
+            game.cellsRevealed += 1;
+        } else {
+            if (game.levelNumber == 4) {
+                new WinPanel();
+            } else {
+                new WinScreenPanel();
+            }
+        }
+    }
+
+
+    public void showForPotion() {
+        this.setIcon(new ImageIcon("sprites/numberSprites/" + this.neighborMines + ".png"));
+    }
+
+    public void hideForPotion() {
+        if (!this.isRevealed) {
+            this.setIcon(new ImageIcon("sprites/wall_icon.png"));
+        }
+    }
+
+    @Override
+    public void setDefaultIcon() {
+        this.showForPotion();
     }
 
 }

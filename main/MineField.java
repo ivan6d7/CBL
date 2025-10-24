@@ -37,7 +37,7 @@ public class MineField {
 
         int[][] field = this.field;
 
-        Random random = new Random(12345);
+        Random random = new Random();
         
         int height = field.length; //height of the field
         int width = field[0].length; //length of the field
@@ -60,6 +60,30 @@ public class MineField {
 
             if (field[a][b] != 1) {
                 field[a][b] = 2;
+            } else {
+                x--;
+            }
+
+        }
+
+        for (int x = 0; x < bonusCount; x++) { //generaten mineCount mines on the field
+            int a = random.nextInt(height - 1); //x-index of the potential mine
+            int b = random.nextInt(width - 1); //y-index of the potential mine
+
+            if (field[a][b] != 1 && field[a][b] != 2) {
+                field[a][b] = 3;
+            } else {
+                x--;
+            }
+
+        }
+
+        for (int x = 0; x < bonusCount; x++) { //generaten mineCount mines on the field
+            int a = random.nextInt(height - 1); //x-index of the potential mine
+            int b = random.nextInt(width - 1); //y-index of the potential mine
+
+            if (field[a][b] != 1 && field[a][b] != 2 && field[a][b] != 3) {
+                field[a][b] = 4;
             } else {
                 x--;
             }

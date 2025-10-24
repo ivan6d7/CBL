@@ -23,21 +23,37 @@ public class game {
 
     public static int levelNumber = saveReader.readSaveLevel(); 
 
-    static MineField mineField = new MineField(fieldLength, fieldHeight, mineCount);
+    static MineField mineField;
 
-    public static int[][] field = mineField.field;
+    public static int[][] field;
 
-    public static EmptyCell[][] cellField = new EmptyCell[fieldLength][fieldHeight];
+    public static EmptyCell[][] cellField;
+    public static MineCell[][] mineCellField;
 
-    public static JFrame frame = new JFrame();
+    public static JFrame frame;
 
-    public static JPanel mainPanel = new JPanel();
+    public static JPanel mainPanel;
 
     public static PlayerPanel playerPanel;
 
+
+    public static JPanel panel; //Jpanel with the game field
+
     public static void render() {
 
+        panel = new JPanel();
+
+        frame = new JFrame();
+
+        mainPanel = new JPanel();
+
+        cellField = new EmptyCell[fieldLength][fieldHeight];
+
+        mineCellField = new MineCell[fieldLength][fieldHeight];
+
         saveWriter.saveLevel();
+
+        playerPanel = new PlayerPanel();
 
         levels level = new levels(levelNumber);
 
@@ -64,7 +80,6 @@ public class game {
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(); //Jpanel with the game field
         panel.setLayout(new GridLayout(fieldLength, fieldHeight));
 
 
@@ -75,9 +90,17 @@ public class game {
 
                     panel.add(mineCell);
                 } else if (field[y][x] == 2) {
-                    HealPotionCell healPotionCell = new HealPotionCell(y, x, mineField);
 
-                    panel.add(healPotionCell);
+                    panel.add(new HealPotionCell(y, x, mineField));
+
+                } else if (field[y][x] == 3) {
+
+                    panel.add(new RevealPotionCell(y, x, mineField));
+
+                } else if (field[y][x] == 4) {
+
+                    panel.add(new DisarmKitCell(y, x, mineField));
+
                 } else {
                     EmptyCell emptyCell = new EmptyCell(y, x, mineField);
 
@@ -86,8 +109,6 @@ public class game {
 
             }
         }
-
-        playerPanel = new PlayerPanel();
 
         frame.add(panel);
         frame.add(playerPanel);
