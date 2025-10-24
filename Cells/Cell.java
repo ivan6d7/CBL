@@ -6,7 +6,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 import main.game;
-import UI.Screens.PlayerPanel;
 
 
 public abstract class Cell extends JButton {
