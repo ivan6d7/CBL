@@ -16,3 +16,5 @@ After installing and extracting the ZIP file, change directory to CBL and Run
 java main/game
 ```
 
+## PS
+link to github repository: https://github.com/ivan6d7/CBL
