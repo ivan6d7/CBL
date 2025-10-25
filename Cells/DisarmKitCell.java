@@ -19,7 +19,7 @@ public class DisarmKitCell extends EmptyCell{
     /**
      * Icon shown when the disarm kit is revealed.
      */
-    ImageIcon disarmIcon = new ImageIcon("sprites/items/defuseKitFull.png");
+    ImageIcon disarmIcon = new ImageIcon("sprites/defuseKitIcon.png");
 
     /**
      * Create a DisarmKitCell for the given coordinates.
