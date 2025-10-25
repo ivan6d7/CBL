@@ -6,6 +6,14 @@ import javax.swing.*;
 import SaveSystem.saveWriter;
 import main.game;
 
+/**
+ * Button used to retry the current level.
+ *
+ * Clicking this button should reset level-specific state, optionally reset
+ * item availability, and reload the current level. The class may call save
+ * routines to reset persisted item state and should coordinate with the main
+ * game renderer to rebuild the board.
+ */
 public class RetryButton extends JButton {
 
     String text = "Retry";

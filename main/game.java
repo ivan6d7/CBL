@@ -8,37 +8,72 @@ import UI.Screens.PlayerPanel;
 import java.awt.*;
 import javax.swing.*;
 
-
-
+/**
+ * Main application class that initializes and runs the Minesweeper-like game.
+ *
+ * This class holds global game state (field size, mine count, revealed cells,
+ * flags, save/load state) and is responsible for constructing the Swing UI,
+ * creating the MineField, and populating the UI with cell components.
+ */
 public class game {
 
-    public static int fieldLength = 10;
-    public static int fieldHeight = 10;
-    public static int mineCount = 10;
+    /** Number of columns in the game field. */
+    public static int fieldLength;
+
+    /** Number of rows in the game field. */
+    public static int fieldHeight;
+
+    /** Total number of mines placed in the field. */
+    public static int mineCount;
+
+    /** Number of cells that have been revealed by the player. */
     public static int cellsRevealed;
+
+    /** Number of non-mine cells that must be revealed to win (computed). */
     public static int target = fieldLength * fieldHeight - mineCount;
 
+    /** Number of flags the player has placed. */
     public static int flagsSet;
+
+    /** Player's remaining lives loaded from save. */
     public static int lifeCount = saveReader.readSaveLife();
 
+    /** Current level number loaded from save. */
     public static int levelNumber = saveReader.readSaveLevel(); 
 
+    /** The MineField model that contains the field data and game logic. */
     static MineField mineField;
 
+    /** Raw integer matrix representation of the field (as provided by MineField). */
     public static int[][] field;
 
+    /** 2D array of EmptyCell UI components for all cells. */
     public static EmptyCell[][] cellField;
+
+    /** 2D array of MineCell UI components for mine cells. */
     public static MineCell[][] mineCellField;
 
+    /** Main application window (JFrame). */
     public static JFrame frame;
 
+    /** Root panel that holds the game field and player panel. */
     public static JPanel mainPanel;
 
+    /** Top/bottom player status UI panel. */
     public static PlayerPanel playerPanel;
 
-
+    /** JPanel that holds the grid of cell components representing the field. */
     public static JPanel panel; //Jpanel with the game field
 
+    /**
+     * Builds and shows the game UI for the current saved level.
+     *
+     * This method:
+     * - Loads level settings and save state,
+     * - (Re)creates the MineField model,
+     * - Initializes Swing components and the grid of cell components,
+     * - Packs and displays the main frame centered on screen.
+     */
     public static void render() {
 
         panel = new JPanel();
@@ -120,6 +155,9 @@ public class game {
         
     }
 
+    /**
+     * Application run.
+     */
     public static void main(String[] args) {  
         game.render();
     }
