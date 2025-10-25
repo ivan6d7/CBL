@@ -69,7 +69,6 @@ public class HealPotionCell extends EmptyCell {
             game.playerPanel.itemPanel.healingPotionButton.update(true);
             this.isRevealed = true;
             this.iconSet = false;
-            this.checkWinCondition();
             super.reveal(row, col);
             this.setIcon(potionIcon);
         }

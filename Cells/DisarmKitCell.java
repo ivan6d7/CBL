@@ -54,7 +54,6 @@ public class DisarmKitCell extends EmptyCell{
         if (!isRevealed) {
             game.playerPanel.itemPanel.disarmKitButton.update(true);
             this.isRevealed = true;
-            this.checkWinCondition(); 
             super.reveal(row, col);
             this.setIcon(disarmIcon);
         }

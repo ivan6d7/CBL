@@ -56,7 +56,6 @@ public class RevealPotionCell extends EmptyCell{
             game.playerPanel.itemPanel.revealPotionButton.update(true);
             this.isRevealed = true;
             this.iconSet = true;
-            this.checkWinCondition(); 
             super.reveal(row, col);
             this.setIcon(revealIcon);
         }
@@ -64,7 +63,6 @@ public class RevealPotionCell extends EmptyCell{
         super.reveal(row, col);
         
         this.setIcon(revealIcon);
-        this.checkWinCondition(); 
     }
     
 }
