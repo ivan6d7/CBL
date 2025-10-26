@@ -156,7 +156,7 @@ public class game {
     }
 
     /**
-     * Application run.
+     * Application.
      */
     public static void main(String[] args) {  
         game.render();
