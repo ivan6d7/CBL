@@ -41,7 +41,7 @@ public class saveReader {
             new FileReader("saveFiles_txt/level.txt"))) {
             return Integer.parseInt(br.readLine());
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return 1;
         }

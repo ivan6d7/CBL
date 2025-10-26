@@ -13,7 +13,7 @@ Player can click cells to reveal them with left click, set flags on where they s
 ## How to access the game
 After installing and extracting the ZIP file, change directory to CBL and Run
 ```bash
-java main/game
+java -cp out main.game
 ```
 
 ## PS
