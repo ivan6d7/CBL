@@ -43,7 +43,7 @@ public class saveReader {
 
         } catch (IOException e) {
             e.printStackTrace();
-            return 0;
+            return 1;
         }
     }
 

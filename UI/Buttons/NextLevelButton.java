@@ -35,9 +35,7 @@ public class NextLevelButton extends JButton{
                 game.frame.revalidate();
                 game.frame.dispose();
 
-                game.main(null);
-
-                game.playerPanel.updateData();
+                game.render();
             }
         });
     }
