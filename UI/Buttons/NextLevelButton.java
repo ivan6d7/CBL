@@ -31,7 +31,13 @@ public class NextLevelButton extends JButton{
             public void actionPerformed(ActionEvent e) {
                 // advance saved/current level and rebuild UI for the new level
                 game.levelNumber += 1;
-                game.render();
+                game.frame.removeAll();
+                game.frame.revalidate();
+                game.frame.dispose();
+
+                game.main(null);
+
+                game.playerPanel.updateData();
             }
         });
     }
